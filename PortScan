@@ -9,6 +9,7 @@ from tqdm import tqdm
 #Blank your screen
 subprocess.call('clear', shell=True)
 
+#nslookup
 #Get host IP address from domain name
 
 dname= input("Enter a domain name to lookup: ")
@@ -31,7 +32,11 @@ total = t2 - t1
 
 print ('Scanning Completed In , total)
 
+#DNS Enumerator
 
+answers = dns.resovler.rsolve(dname, 'A')
+for server in answers:
+    print(server.to_text())
 
 
 remoteServer = input("Enter a remote host to scan: ")
@@ -40,7 +45,10 @@ remoteServerIP = socket.gethostbyname(remoteServer)
 #Check the date and time the scan was started
 t1=datetime.now()
 
-#DNS Lookup
+
+
+
+
 
 #result = dns.resolver.query(remoteServerIP)
 #for val in result:
