@@ -34,8 +34,11 @@ print ('Scanning Completed In , total)
 
 #DNS Enumerator
 
-answers = dns.resovler.rsolve(dname, 'A')
-for server in answers:
+record_types = ['A', 'AAAA', 'NS', 'CNAME', 'MX', 'PTF', 'SOA, 'TXT']
+
+Domain = sys.argv[1]
+answer = dns.resovler.resolve(domain, 'A')
+for server in answer:
     print(server.to_text())
 
 
