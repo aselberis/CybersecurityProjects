@@ -47,16 +47,21 @@ print ("_" *60)
 record_types = ['A', 'AAAA', 'NS', 'CNAME', 'MX', 'PTF', 'SOA', 'TXT']
 
 domain = sys.argv[1]
-answer = dns.resovler.resolve(domain, 'A')
+answer = dns.resolver.resolve(domain, 'A')
 for records in record_types:
     try:
-        answer = dns.resovler.resolve(domain, records)
+        answer = dns.resolver.resolve(domain, records)
         print(f'{records} Records')
         print('-' *30)
         for server in answer:
-            print(server.to_text())
+            print(server.to_text()+ '\n')
     except dns.resolver.NoAnswer:
         pass
+    except dns.resolver.NXDOMAIN:
+        (f'{domain} does not exist.')
+    except KeyboardInterrupt:
+        print("Quitting. Goodbye")
+        quit()
 
 
 
