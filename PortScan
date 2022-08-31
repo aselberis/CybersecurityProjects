@@ -46,10 +46,19 @@ print ("_" *60)
 
 record_types = ['A', 'AAAA', 'NS', 'CNAME', 'MX', 'PTF', 'SOA, 'TXT']
 
-Domain = sys.argv[1]
+domain = sys.argv[1]
 answer = dns.resovler.resolve(domain, 'A')
-for server in answer:
-    print(server.to_text())
+for records in record_types:
+    try:
+        answer = dns.resovler.resolve(domain, records)
+        print(f'{records} Records')
+        print('-' *30)
+        for server in answer:
+            print(server.to_text())
+    except dns.resolver.NoAnswer:
+        pass
+
+
 
 
 remoteServer = input("Enter a remote host to scan: ")
