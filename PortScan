@@ -38,6 +38,12 @@ total = t2 - t1
 
 print ('Scan Completed In , total)
 
+
+remoteServer = input("Enter a remote host to scan: ")
+remoteServerIP = socket.gethostbyname(remoteServer)
+
+#Check the date and time the scan was started
+t1=datetime.now()
 #Print a nice banner with information on which host we are about to scan
 print ("_" *60)
 print ("Please wait, scanning remote host for open ports", remoteServerIP)
