@@ -44,7 +44,7 @@ print ("_" *60)
 print ("Now let's enumerate")
 print ("_" *60)
 
-record_types = ['A', 'AAAA', 'NS', 'CNAME', 'MX', 'PTF', 'SOA, 'TXT']
+record_types = ['A', 'AAAA', 'NS', 'CNAME', 'MX', 'PTF', 'SOA', 'TXT']
 
 domain = sys.argv[1]
 answer = dns.resovler.resolve(domain, 'A')
