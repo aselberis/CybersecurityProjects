@@ -28,7 +28,7 @@ print ("_" *60)
 #Check the date and time the scan was started
 t1=datetime.now()
 
-print("IP Address of host is {}", socket.gethostbyname(dname))
+print("IP Address of host is", socket.gethostbyname(dname))
 
 #Checking time again
 t2 = datetime.now()
@@ -36,9 +36,13 @@ t2 = datetime.now()
 #Calculate the difference in time to now how long the scan took
 total = t2 - t1
 
-print ('Scanning Completed In , total)
+print ('Scan Completed In , total)
 
 #DNS Enumerator
+#Print a nice banner with information on what we are doing next
+print ("_" *60)
+print ("Now let's enumerate")
+print ("_" *60)
 
 record_types = ['A', 'AAAA', 'NS', 'CNAME', 'MX', 'PTF', 'SOA, 'TXT']
 
@@ -69,7 +73,7 @@ t2 = datetime.now()
 #Calculate the difference in time to now how long the scan took
 total = t2 - t1
 
-print ('Scanning Completed In , total)
+print ('Scanning Completed In ', total)
 
 
 
