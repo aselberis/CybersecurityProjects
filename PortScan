@@ -39,6 +39,34 @@ total = t2 - t1
 print ('Scan Completed In , total)
 
 
+#DNS Enumerator
+#Print a nice banner with information on what we are doing next
+print ("_" *60)
+print ("Now let's do DNS enumeration")
+print ("_" *60)
+
+record_types = ['A', 'AAAA', 'NS', 'CNAME', 'MX', 'PTF', 'SOA', 'TXT']
+    try:
+        domain = sys.argv[1]
+    except IndexError:
+        print("Syntax Error - python3 demodns.py <domainname>")
+        quit()
+    for records in record_types:
+    try:
+        answer = dns.resolver.resolve(domain, records)
+        print(f'{records} Records')
+        print('-' *30)
+        for server in answer:
+            print(server.to_text()+ '\n')
+    except dns.resolver.NoAnswer:
+        pass
+    except dns.resolver.NXDOMAIN:
+        (f'{domain} does not exist.')
+    except KeyboardInterrupt:
+        print("Quitting. Goodbye")
+        quit()
+
+
 remoteServer = input("Enter a remote host to scan: ")
 remoteServerIP = socket.gethostbyname(remoteServer)
 
@@ -77,44 +105,7 @@ t2 = datetime.now()
 total = t2 - t1
 
 #Printing the information on the screen
-print ('Scanning Completed In , total)
-
-#DNS Enumerator
-#Print a nice banner with information on what we are doing next
-print ("_" *60)
-print ("Now let's enumerate")
-print ("_" *60)
-
-record_types = ['A', 'AAAA', 'NS', 'CNAME', 'MX', 'PTF', 'SOA', 'TXT']
-    try:
-        domain = sys.argv[1]
-    except IndexError:
-        print("Syntax Error - python3 demodns.py <domainname>")
-        quit()
-    for records in record_types:
-    try:
-        answer = dns.resolver.resolve(domain, records)
-        print(f'{records} Records')
-        print('-' *30)
-        for server in answer:
-            print(server.to_text()+ '\n')
-    except dns.resolver.NoAnswer:
-        pass
-    except dns.resolver.NXDOMAIN:
-        (f'{domain} does not exist.')
-    except KeyboardInterrupt:
-        print("Quitting. Goodbye")
-        quit()
-
-
-
-
-remoteServer = input("Enter a remote host to scan: ")
-remoteServerIP = socket.gethostbyname(remoteServer)
-
-#Check the date and time the scan was started
-t1=datetime.now()
-
+print ('Scanning Completed In ', total)
 
 
 
