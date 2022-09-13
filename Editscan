@@ -1,4 +1,5 @@
-mport pyfiglet
+https://asciinema.org/connect/1e28283b-4399-491f-9fe0-771bd9cf9f56
+import pyfiglet
 import socket
 import subprocess
 import sys
