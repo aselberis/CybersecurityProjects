@@ -90,13 +90,13 @@ print ("Now let's do DNS enumeration")
 print ("_" *60)
 
 record_types = ['A', 'AAAA', 'NS', 'CNAME', 'MX', 'PTF', 'SOA', 'TXT']
-    try:
+try:
         domain = sys.argv[2]
     except IndexError:
         print("Syntax Error - python3 demodns.py <tdomain>")
         quit()
     for records in record_types:
-    try:
+try:
         answer = dns.resolver.resolve(domain, records)
         print(f'{records} Records')
         print('-' *30)
