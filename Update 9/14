@@ -1,3 +1,4 @@
+https://www.youtube.com/watch?v=SLQrbjeVrk0&list=TLPQMTQwOTIwMjI56ehbYq4FXw&index=2
 https://asciinema.org/connect/1e28283b-4399-491f-9fe0-771bd9cf9f56
 https://pythontic.com/modules/socket/getservbyport#:~:text=The%20getservbyport%20%28%29function%20from%20Python%E2%80%99s%20socket%20module%20returns,the%20port%20numbers%2021%2C%20105%2C%2080%20and%20443.
 https://subscription.packtpub.com/book/networking-and-servers/9781786463999/1/ch01lvl1sec06/finding-a-service-name-given-the-port-and-protocol#:~:text=If%20you%20know%20the%20port%20number%20of%20a,when%20calling%20this%20function.%20How%20to%20do%20it
@@ -48,21 +49,6 @@ print ("_" *60)
 print ("Please wait, scanning remote host for open ports", targetIP)
 print ("_" *60)
 
-#defining services running on open ports
-def printServiceOnPort(portNumber, protocol):
-
-    serviceName = socket.getservbyport(portNumber, protocol);
-
-    print("Name of the service running at port number %d : %s"%(portNumber, serviceName));
-
-printServiceOnPort(21,  "tcp");
-
-printServiceOnPort(105, "tcp");
-
-printServiceOnPort(80,  "tcp");
-
-printServiceOnPort(443, "tcp");
-
 try:
     #scan all ports on target ip
     for port in range (1, 100):
@@ -71,7 +57,7 @@ try:
             socket.setdefaulttimeout(0.5)
     
     #return list of open ports        
-            result = sock.connect_ex((targetIP, port))
+            result = s.connect_ex((targetIP, port))
             if result ==0:
                 print ("Port {}[+]:     Open".format(port))
     #I decided I do not want to spend time finding closed prots           
