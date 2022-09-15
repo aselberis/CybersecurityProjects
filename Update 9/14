@@ -1,19 +1,12 @@
-https://www.youtube.com/watch?v=SLQrbjeVrk0&list=TLPQMTQwOTIwMjI56ehbYq4FXw&index=2
-https://asciinema.org/connect/1e28283b-4399-491f-9fe0-771bd9cf9f56
-https://pythontic.com/modules/socket/getservbyport#:~:text=The%20getservbyport%20%28%29function%20from%20Python%E2%80%99s%20socket%20module%20returns,the%20port%20numbers%2021%2C%20105%2C%2080%20and%20443.
-https://subscription.packtpub.com/book/networking-and-servers/9781786463999/1/ch01lvl1sec06/finding-a-service-name-given-the-port-and-protocol#:~:text=If%20you%20know%20the%20port%20number%20of%20a,when%20calling%20this%20function.%20How%20to%20do%20it
 import pyfiglet
 import socket
-import subprocess
 import sys
 import dns.resolver
 from datetime import datetime
 from colorama import init, Fore
-from tqdm import tqdm
 
-
-#Create splash screen
-splash=pyfiglet.figlet_format("KyvernoScan")
+#Create an awesome splash screen
+splash=pyfiglet.figlet_format("DNS RECON")
 print(splash)
 
 #Get host IP address from domain name
