@@ -1,0 +1,28 @@
+#DNS Enumerator
+#Print a nice banner with information on what we are doing next
+print (" " *60)
+print ("#" *60)
+print ("     Now let's enumerate to find potential target systems")
+print ("#" *60)
+
+record_types = ['A', 'AAAA', 'NS', 'CNAME', 'MX']
+try:
+    domain = sys.argv[1]
+except IndexError:
+    print("Syntax Error - python3 demodns.py <domainname>")
+    
+for records in record_types:
+    try:
+        answer = dns.resolver.resolve(domain, records)
+        print(f'{records} Records')
+        print('-' *30)
+        for server in answer:
+            print(server.to_text()+ '\n')
+    except dns.resolver.NoAnswer:
+        pass
+    except dns.resolver.NXDOMAIN:
+        print(f'{domain} does not exist.')
+        #quit()
+    except KeyboardInterrupt:
+        print("Quitting. Goodbye")
+        #quit()
