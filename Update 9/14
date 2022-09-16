@@ -3,7 +3,6 @@ import socket
 import sys
 import dns.resolver
 from datetime import datetime
-from colorama import init, Fore
 
 #Create an awesome splash screen
 splash=pyfiglet.figlet_format("DNS RECON")
